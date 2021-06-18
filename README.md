@@ -1,18 +1,11 @@
-## My Project
+## FreeRTOS-Community-Supported-Demos
 
-TODO: Fill this README out!
-
-Be sure to:
-
-* Change the title in this README
-* Edit your repository description on GitHub
-* Write in your license below and create a LICENSE file
+This repository is under construction.
 
 ## Security
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+See [CONTRIBUTING](.github/CONTRIBUTING.md#security-issue-notifications) for more information.
 
 ## License
 
-This library is licensed under the LICENSE NAME HERE License.
-
+This repository contains multiple directories, each individually licensed. Please see the LICENSE file in each directory.
