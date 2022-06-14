@@ -1,0 +1,50 @@
+<projectSpec>
+  <project
+        name="freertos_ex4_c28x_interrupt_latency"
+        device="TMS320F28388D"
+        cgtVersion="20.2.1.LTS"
+        outputFormat="ELF"
+        launchWizard="False"
+        linkerCommandFile=""
+        enableSysConfigTool="true"
+        sysConfigBuildOptions="--product ${C2000WARE_ROOT}/.metadata/sdk.json --device F2838x"
+        >
+    <configuration name="CPU1_RAM" compilerBuildOptions="--opt_level=off -I${PROJECT_ROOT}/device -I${PROJECT_ROOT}/print_support -I${C2000WARE_DLIB_ROOT} -I${FreeRTOS_ROOT}/Source/include -I${FreeRTOS_SOURCE_INCLUDE} -I${FreeRTOS_SOURCE_PORT} -v28 -ml -mt --define=RAM --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --define=DEBUG  --define=CPU1  --diag_warning=225  --diag_suppress=10063" linkerBuildOptions="--entry_point code_start --stack_size=256  --heap_size=64 " />
+    <configuration name="CPU1_FLASH" compilerBuildOptions="--opt_level=off -I${PROJECT_ROOT}/device -I${PROJECT_ROOT}/print_support -I${C2000WARE_DLIB_ROOT} -I${FreeRTOS_ROOT}/Source/include -I${FreeRTOS_SOURCE_INCLUDE} -I${FreeRTOS_SOURCE_PORT} -v28 -ml -mt --define=_FLASH --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --define=DEBUG  --define=CPU1  --diag_warning=225  --diag_suppress=10063" linkerBuildOptions="--entry_point code_start --stack_size=256  --heap_size=64 " />
+
+    <pathVariable name="C2000WARE_ROOT" path="C:/ti/c2000/C2000Ware_4_01_00_00" scope="project" />
+    <pathVariable name="C2000WARE_DLIB_ROOT" path="${C2000WARE_ROOT}/driverlib/f2838x/driverlib" scope="project" />
+    <pathVariable name="FreeRTOS_ROOT" path="../../../../.." scope="project" />
+    <pathVariable name="FreeRTOS_SOURCE_INCLUDE" path="${FreeRTOS_ROOT}/Source/include" scope="project" />
+    <pathVariable name="FreeRTOS_SOURCE_PORT" path="${FreeRTOS_ROOT}/Source/portable/ThirdParty/Community-Supported-Ports/CCS/C2000_C28x" scope="project" />
+
+    <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/include/driverlib.h" targetDirectory="device" />
+    <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/include/device.h" targetDirectory="device" />
+    <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/source/device.c" targetDirectory="device" />
+    <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/targetConfigs/TMS320F28388D.ccxml" targetDirectory="targetConfigs" />
+    <file action="copy" path="../linker_cmd/2838x_FreeRTOS_FLASH_lnk_cpu1.cmd" targetDirectory="" applicableConfigurations="CPU1_FLASH" />
+    <file action="copy" path="../linker_cmd/2838x_FreeRTOS_RAM_lnk_cpu1.cmd" targetDirectory="" applicableConfigurations="CPU1_RAM" />
+    <file action="copy" path="${C2000WARE_DLIB_ROOT}/" targetDirectory="device" excludeFromBuild="True" />
+    <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/source/f2838x_codestartbranch.asm" targetDirectory="device" />
+    <file action="link" path="${C2000WARE_DLIB_ROOT}/ccs/Debug/driverlib.lib" targetDirectory="" />
+
+    <file action="link" path="${FreeRTOS_ROOT}/Source/include" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/portable/ThirdParty/Community-Supported-Ports/CCS/C2000_C28x" targetDirectory="FreeRTOS/Source/portable/CCS" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/portable/MemMang/heap_4.c" targetDirectory="FreeRTOS/Source/portable/MemMang" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/croutine.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/event_groups.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/list.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/queue.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/stream_buffer.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/tasks.c" targetDirectory="FreeRTOS/Source" />
+    <file action="link" path="${FreeRTOS_ROOT}/Source/timers.c" targetDirectory="FreeRTOS/Source" />
+
+    <file action="copy" path="../print_support/uart_drv.c" targetDirectory="print_support" />
+    <file action="copy" path="../print_support/uart_drv.h" targetDirectory="print_support" />
+    <file action="copy" path="../print_support/printf-stdarg.c" targetDirectory="print_support" />
+
+    <file action="copy" path="../freertos_config/FreeRTOSConfig_ex4_interrupt_latency.h" targetDirectory="" targetName="FreeRTOSConfig.h" />
+
+    <file action="copy" path="../freertos_ex4_c28x_interrupt_latency.c" targetDirectory="" />
+  </project>
+</projectSpec>
