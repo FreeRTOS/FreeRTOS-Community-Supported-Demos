@@ -23,7 +23,7 @@
     <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/source/device.c" targetDirectory="device" />
     <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/targetConfigs/TMS320F28388D.ccxml" targetDirectory="targetConfigs" />
     <file action="copy" path="../linker_cmd/2838x_FreeRTOS_FLASH_lnk_cpu1.cmd" targetDirectory="" applicableConfigurations="CPU1_FLASH" />
-	<file action="copy" path="../linker_cmd/2838x_FreeRTOS_RAM_lnk_cpu1.cmd" targetDirectory="" applicableConfigurations="CPU1_RAM" />
+    <file action="copy" path="../linker_cmd/2838x_FreeRTOS_RAM_lnk_cpu1.cmd" targetDirectory="" applicableConfigurations="CPU1_RAM" />
     <file action="copy" path="${C2000WARE_DLIB_ROOT}/" targetDirectory="device" excludeFromBuild="True" />
     <file action="copy" path="${C2000WARE_ROOT}/device_support/f2838x/common/source/f2838x_codestartbranch.asm" targetDirectory="device" />
     <file action="link" path="${C2000WARE_DLIB_ROOT}/ccs/Debug/driverlib.lib" targetDirectory="" />
