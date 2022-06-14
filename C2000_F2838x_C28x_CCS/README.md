@@ -45,7 +45,7 @@ QUICK START:
 To run the demos on TMDSCNCD28388D controlcard, the following steps are required:
  - Install Code Compser Studio(CCS): https://www.ti.com/tool/CCSTUDIO
  - Install latest C2000Ware package: https://www.ti.com/tool/C2000WARE
- - Update the C2000WARE_ROOT and FreeRTOS_ROOT path variable in the example projectspec files available at following location in the repo: FreeRTOS-Partner-Supported-Demos\C2000_F2838x_C28x_CCS\CCS
+ - Update the C2000WARE_ROOT and FreeRTOS_ROOT path variable in the example projectspec files available at following location in the repo: FreeRTOS-Community-Supported-Demos\C2000_F2838x_C28x_CCS\CCS
  - Import the example project file in CCS
  - Build and debug the project
 
