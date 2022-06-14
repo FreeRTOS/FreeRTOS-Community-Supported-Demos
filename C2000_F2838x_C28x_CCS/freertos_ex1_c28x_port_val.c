@@ -118,7 +118,6 @@ uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
 #pragma DATA_SECTION(ucHeap,   ".freertosHeap")
 #endif
 
-
 //
 // Function Declarations
 //

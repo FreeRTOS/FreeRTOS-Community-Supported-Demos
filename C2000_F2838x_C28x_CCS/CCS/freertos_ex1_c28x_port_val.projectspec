@@ -10,7 +10,6 @@
         sysConfigBuildOptions="--product ${C2000WARE_ROOT}/.metadata/sdk.json --device F2838x"
         >
     <configuration name="CPU1_FLASH" compilerBuildOptions="--opt_level=off -I${PROJECT_ROOT}/device -I${PROJECT_ROOT}/print_support -I${C2000WARE_DLIB_ROOT} -I${FreeRTOS_ROOT}/Source/include -I${FreeRTOS_SOURCE_INCLUDE} -I${FreeRTOS_SOURCE_PORT} -I${FreeRTOS_STD_DEMO_TASKS} -I${FreeRTOS_STD_DEMO_CINCLUDE} -v28 -ml -mt --define=_FLASH --cla_support=cla2 --float_support=fpu32 --tmu_support=tmu0 --define=DEBUG  --define=CPU1  --diag_warning=225  --diag_suppress=10063" linkerBuildOptions="--entry_point code_start --stack_size=256  --heap_size=64 " />
-
     <pathVariable name="C2000WARE_ROOT" path="C:/ti/c2000/C2000Ware_3_02_00_00" scope="project" />
     <pathVariable name="C2000WARE_DLIB_ROOT" path="${C2000WARE_ROOT}/driverlib/f2838x/driverlib" scope="project" />
     <pathVariable name="FreeRTOS_ROOT" path="../../../../.." scope="project" />
