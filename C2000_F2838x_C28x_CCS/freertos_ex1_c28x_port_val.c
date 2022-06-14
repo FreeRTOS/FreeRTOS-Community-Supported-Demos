@@ -103,6 +103,23 @@
 #include "uart_drv.h"
 
 //
+// Globals
+//
+static StaticTask_t xIdleTaskTCB;
+static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
+#pragma DATA_SECTION(uxIdleTaskStack,   ".freertosStaticStack")
+
+static StaticTask_t xTimerTaskTCB;
+static StackType_t uxTimerTaskStack[ configTIMER_TASK_STACK_DEPTH ];
+#pragma DATA_SECTION(uxTimerTaskStack,   ".freertosStaticStack")
+
+#if(configAPPLICATION_ALLOCATED_HEAP == 1)
+uint8_t ucHeap[ configTOTAL_HEAP_SIZE ];
+#pragma DATA_SECTION(ucHeap,   ".freertosHeap")
+#endif
+
+
+//
 // Function Declarations
 //
 void vApplicationStackOverflowHook(TaskHandle_t pxTask, char *pcTaskName);
@@ -119,8 +136,10 @@ void vApplicationSetupTimerInterrupt( void );
 void vMainAssertCalled( const char *pcFileName, uint32_t ulLineNumber );
 void vMainToggleLED( void );
 void configCPUTimer(uint32_t cpuTimer, uint32_t period);
+#if defined(__TI_EABI__)
 void *malloc( size_t xSize );
 #pragma WEAK (malloc)
+#endif
 
 //
 // UART stdout redirection configuration related APIs
@@ -240,8 +259,6 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer,
     /* If the buffers to be provided to the Idle task are declared inside this
     function then they must be declared static - otherwise they will be allocated on
     the stack and so not exists after this function exits. */
-    static StaticTask_t xIdleTaskTCB;
-    static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
 
     /* Pass out a pointer to the StaticTask_t structure in which the Idle task's
     state will be stored. */
@@ -268,8 +285,6 @@ void vApplicationGetTimerTaskMemory( StaticTask_t **ppxTimerTaskTCBBuffer,
     /* If the buffers to be provided to the Timer task are declared inside this
     function then they must be declared static - otherwise they will be allocated on
     the stack and so not exists after this function exits. */
-    static StaticTask_t xTimerTaskTCB;
-    static StackType_t uxTimerTaskStack[ configTIMER_TASK_STACK_DEPTH ];
 
     /* Pass out a pointer to the StaticTask_t structure in which the Timer
     task's state will be stored. */
@@ -353,6 +368,7 @@ volatile BaseType_t xSetToNonZeroToStepOutOfLoop = 0;
     }
 }
 
+#if defined(__TI_EABI__)
 //
 // Traps malloc calls
 //
@@ -363,6 +379,7 @@ void *malloc( size_t xSize )
     taskDISABLE_INTERRUPTS();
     for( ;; );
 }
+#endif
 
 //
 // Toggles onboard LED2

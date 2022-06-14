@@ -48,7 +48,11 @@ which case a heap_n.c file is not required), only dynamic allocation is to be
 supported, or if both static and dynamic allocation are supported. */
 #define configSUPPORT_STATIC_ALLOCATION         1
 #define configSUPPORT_DYNAMIC_ALLOCATION        1
-//#define configAPPLICATION_ALLOCATED_HEAP        1
+
+/* This option needs to be enabled to keep the heap memory in valid memory section
+ * as the c28x stack memory can be allocated in the lower 64k RAM memory only.
+ */
+#define configAPPLICATION_ALLOCATED_HEAP        1
 
 /* Constants that describe the hardware and memory usage. */
 #define configCPU_CLOCK_HZ                  ( ( unsigned long ) 200000000 )

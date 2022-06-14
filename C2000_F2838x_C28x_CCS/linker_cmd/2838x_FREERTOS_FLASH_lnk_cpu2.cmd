@@ -3,8 +3,8 @@ MEMORY
 {
    /* BEGIN is used for the "boot to Flash" bootloader mode   */
    BEGIN            : origin = 0x080000, length = 0x000002
-   BOOT_RSVD        : origin = 0x000002, length = 0x0001AF     /* Part of M0, BOOT rom will use this for stack */
-   RAMM0            : origin = 0x0001B1, length = 0x00024F
+   BOOT_RSVD        : origin = 0x000002, length = 0x0001A7     /* Part of M0, BOOT rom will use this for stack */
+   RAMM0            : origin = 0x0001A9, length = 0x000257
    RAMM1            : origin = 0x000400, length = 0x0003F8     /* on-chip RAM block M1 */
 //   RAMM1_RSVD       : origin = 0x0007F8, length = 0x000008     /* Reserve and do not use for code as per the errata advisory "Memory: Prefetching Beyond Valid Memory" */
 
@@ -19,8 +19,8 @@ MEMORY
    RAMLS7           : origin = 0x00B800, length = 0x000800
    */
 
-   RAMLSxDxGSx      : origin = 0x008000, length = 0x008000
-   RAMGSx           : origin = 0x010000, length = 0x00CFF8
+   RAMLSxDx         : origin = 0x008000, length = 0x005000
+   RAMGSx           : origin = 0x00D000, length = 0x00FFF8
    /*
    RAMD0            : origin = 0x00C000, length = 0x000800
    RAMD1            : origin = 0x00C800, length = 0x000800
@@ -66,9 +66,6 @@ MEMORY
    CPUTOCMRAM      : origin = 0x039000, length = 0x000800
    CMTOCPURAM      : origin = 0x038000, length = 0x000800
 
-   CANA_MSG_RAM     : origin = 0x049000, length = 0x000800
-   CANB_MSG_RAM     : origin = 0x04B000, length = 0x000800
-
    RESET            : origin = 0x3FFFC0, length = 0x000002
 }
 
@@ -79,48 +76,36 @@ SECTIONS
    .cinit              : > FLASH4, ALIGN(8)
    .switch             : > FLASH1, ALIGN(8)
    .reset              : > RESET, TYPE = DSECT /* not used, */
-   .stack              : > RAMLSxDxGSx
+   .stack              : > RAMLSxDx
+   /* IMPORTANT: The FreeRTOS statically allocated stack should be allocated to this section only */
+   .freertosStaticStack  : >> RAMM1 | RAMM0
+   /* IMPORTANT: The FreeRTOS heap should be allocated to this section only as the C28x stack
+      memory can be allocated in the lower 64k RAM memory only. */
+   .freertosHeap         : > RAMLSxDx
 
 #if defined(__TI_EABI__)
    .init_array      : > FLASH1, ALIGN(8)
-   .bss             : > RAMGSx
-   .bss:output      : > RAMGSx
+   .bss             : > RAMLSxDx
+   .bss:output      : > RAMLSxDx
    .bss:cio         : > RAMM0
-   .data            : > RAMGSx
-   .sysmem          : > RAMLSxDxGSx
-   .rtosstatic
-   {
-     freertos_ex1_c28x_port_val.obj(.bss)
-   } >> RAMM1 | RAMM0
-   .bssPortHeap
-   {
-     heap_4.obj (.bss)
-   } >> RAMLSxDxGSx
-
+   .data            : > RAMLSxDx
+   .sysmem          : > RAMLSxDx
    /* Initalized sections go in Flash */
    .const           : > FLASH5, ALIGN(8)
 #else
    .pinit           : > FLASH1, ALIGN(8)
-   .ebss            : > RAMGSx
-   .esysmem         : > RAMLSxDxGSx
+   .ebss            : > RAMLSxDx
+   .esysmem         : > RAMLSxDx
    .cio             : > RAMM0
    /* Initalized sections go in Flash */
    .econst          : >> FLASH4 | FLASH5, ALIGN(8)
-   .ertosstatic
-   {
-     freertos_testproj1_c28x.obj(.ebss)
-   } >> RAMM1 | RAMM0
-   .ebssPortHeap
-   {
-     heap_4.obj (.ebss)
-   } >> RAMLSxDxGSx
 #endif
 
 /*
    ramgs0 : > RAMGS0, type=NOINIT
    ramgs1 : > RAMGS1, type=NOINIT
    */
-   
+
    ramm0 : > RAMM0, type=NOINIT
    ramm1 : > RAMM1, type=NOINIT
    MSGRAM_CPU1_TO_CPU2 : > CPU1TOCPU2RAM, type=NOINIT
@@ -140,7 +125,7 @@ SECTIONS
 
    #if defined(__TI_EABI__)
        .TI.ramfunc : {} LOAD = FLASH3,
-                        RUN = RAMGSx,
+                        RUN = RAMLSxDx,
                         LOAD_START(RamfuncsLoadStart),
                         LOAD_SIZE(RamfuncsLoadSize),
                         LOAD_END(RamfuncsLoadEnd),
@@ -150,7 +135,7 @@ SECTIONS
                         ALIGN(8)
    #else
        .TI.ramfunc : {} LOAD = FLASH3,
-                        RUN = RAMGSx,
+                        RUN = RAMLSxDx,
                         LOAD_START(_RamfuncsLoadStart),
                         LOAD_SIZE(_RamfuncsLoadSize),
                         LOAD_END(_RamfuncsLoadEnd),
