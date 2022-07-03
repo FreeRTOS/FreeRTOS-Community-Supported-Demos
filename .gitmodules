@@ -1,0 +1,3 @@
+[submodule "CORTEX_M4F_TM4C123G_Launchpad_GCC/Source"]
+	path = CORTEX_M4F_TM4C123G_Launchpad_GCC/Source
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git
