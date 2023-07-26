@@ -1,10 +1,7 @@
-## FreeRTOS-Community-Supported-Demos
+## FreeRTOS Community Supported Demos
 
-This directory contains tests projects for FreeRTOS third party Community Supported ports.
-
-## Security
-
-See [CONTRIBUTING](.github/CONTRIBUTING.md#security-issue-notifications) for more information.
+This repository contains demos for FreeRTOS ports supported by FreeRTOS
+community members. Follow [these steps](https://github.com/FreeRTOS/FreeRTOS/blob/main/FreeRTOS/Demo/ThirdParty/Template/README.md) to contribute a demo to this repository.
 
 ## License
 
