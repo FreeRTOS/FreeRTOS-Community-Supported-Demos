@@ -1,6 +1,6 @@
 ## FreeRTOS-Community-Supported-Demos
 
-This repository is under construction.
+This directory contains tests projects for FreeRTOS third party Community Supported ports.
 
 ## Security
 
