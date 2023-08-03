@@ -34,5 +34,17 @@ target_compile_definitions(on_core_one PRIVATE
         mainRUN_FREE_RTOS_ON_CORE=1
         PICO_STACK_SIZE=0x1000
 )
+
+target_compile_options( on_core_one PUBLIC
+        ### Gnu/Clang C Options
+        $<$<COMPILE_LANG_AND_ID:C,GNU>:-fdiagnostics-color=always>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-fcolor-diagnostics>
+
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wall>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wextra>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Werror>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-Weverything>
+        )
+
 pico_add_extra_outputs(on_core_one)
 #pico_enable_stdio_usb(on_core_one 1)

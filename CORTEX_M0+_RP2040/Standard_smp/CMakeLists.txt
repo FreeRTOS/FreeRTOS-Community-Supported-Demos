@@ -61,6 +61,17 @@ target_compile_definitions(main_blinky_smp PRIVATE
         mainCREATE_SIMPLE_BLINKY_DEMO_ONLY=1
         )
 
+target_compile_options( main_blinky_smp PUBLIC
+        ### Gnu/Clang C Options
+        $<$<COMPILE_LANG_AND_ID:C,GNU>:-fdiagnostics-color=always>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-fcolor-diagnostics>
+
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wall>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wextra>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Werror>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-Weverything>
+        )
+
 target_include_directories(main_blinky_smp PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
         ${CMAKE_CURRENT_LIST_DIR}/../../../../Common/include)
