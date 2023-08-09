@@ -46,7 +46,10 @@ possible on Cortex-M devices. */
 
 void prvAlarm0Callback( uint timer )
 {
+    /* Argument timer is not used due to this callback fucntion is not reused and use first timer only. */
+    ( void )timer;
     configASSERT(timer == 0);
+
     BaseType_t xHigherPriorityTaskWoken = xFirstTimerHandler();
     hardware_alarm_set_target(0, make_timeout_time_us( FIRST_TIMER_PERIOD_US) );
     portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
@@ -54,7 +57,10 @@ void prvAlarm0Callback( uint timer )
 
 void prvAlarm1Callback( uint timer )
 {
+    /* Argument timer is not used due to this callback fucntion is not reused and use second timer only. */
+    ( void )timer;
     configASSERT(timer == 1);
+
     BaseType_t xHigherPriorityTaskWoken = xSecondTimerHandler();
     hardware_alarm_set_target(1, make_timeout_time_us( SECOND_TIMER_PERIOD_US) );
     portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);

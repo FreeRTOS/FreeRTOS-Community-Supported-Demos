@@ -18,6 +18,17 @@ target_include_directories(using_cmsis PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
         )
 
+target_compile_options( on_core_one PUBLIC
+        ### Gnu/Clang C Options
+        $<$<COMPILE_LANG_AND_ID:C,GNU>:-fdiagnostics-color=always>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-fcolor-diagnostics>
+
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wall>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Wextra>
+        $<$<COMPILE_LANG_AND_ID:C,Clang,GNU>:-Werror>
+        $<$<COMPILE_LANG_AND_ID:C,Clang>:-Weverything>
+        )
+
 target_link_libraries(using_cmsis PUBLIC
         FreeRTOS-Kernel
         FreeRTOS-Kernel-Heap1

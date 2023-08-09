@@ -104,14 +104,14 @@ static semaphore_t xSDKSemaphore;
 
 static void prvNonRTOSWorker() {
     printf("Core %d: Doing regular SDK stuff\n", get_core_num());
-    uint32_t counter;
+    uint32_t counter = 0;
     while (true) {
         mutex_enter_blocking(&xSDKMutex);
         printf("Core %d: Acquire SDK mutex\n", get_core_num());
         absolute_time_t end_time = make_timeout_time_ms(750);
         while (!time_reached(end_time)) {
             counter++;
-            printf("Core %d: Busy work with mutex %d\n", get_core_num(), counter);
+            printf("Core %d: Busy work with mutex %ld\n", get_core_num(), counter);
             busy_wait_us(137384);
         }
         printf("Core %d: Release SDK mutex\n", get_core_num());
@@ -253,6 +253,9 @@ int main(void) {
 
 static void vExampleTimerCallback( TimerHandle_t xTimer )
 {
+    /* Argument xTimer is not used due to this callback fucntion is not reused and use one timer only. */
+    ( void )xTimer;
+
     /* The timer has expired.  Count the number of times this happens.  The
     timer that calls this function is an auto re-load timer, so it will
     execute periodically. */
@@ -264,6 +267,9 @@ static void prvQueueSendTask( void *pvParameters )
 {
     TickType_t xNextWakeTime;
     const uint32_t ulValueToSend = 100UL;
+
+    /* pvParameters is not used in this task function. */
+    ( void )pvParameters;
 
     /* Initialise xNextWakeTime - this only needs to be done once. */
     xNextWakeTime = xTaskGetTickCount();
@@ -281,7 +287,7 @@ static void prvQueueSendTask( void *pvParameters )
         operation will not block - it shouldn't need to block as the queue
         should always be empty at this point in the code. */
         ulCountOfItemsSentOnQueue++;
-        printf("Core %d - Thread '%s': Queue send %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfItemsSentOnQueue);
+        printf("Core %d - Thread '%s': Queue send %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfItemsSentOnQueue);
         xQueueSend( xQueue, &ulValueToSend, 0 );
     }
 }
@@ -291,6 +297,9 @@ static void prvQueueSendTask( void *pvParameters )
 static void prvQueueReceiveTask( void *pvParameters )
 {
     uint32_t ulReceivedValue;
+
+    /* pvParameters is not used in this task fucntion. */
+    ( void )pvParameters;
 
     for( ;; )
     {
@@ -304,7 +313,7 @@ static void prvQueueReceiveTask( void *pvParameters )
         {
             /* Count the number of items that have been received correctly. */
             ulCountOfItemsReceivedOnQueue++;
-            printf("Core %d - Thread '%s': Queue receive %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfItemsReceivedOnQueue);
+            printf("Core %d - Thread '%s': Queue receive %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfItemsReceivedOnQueue);
         }
     }
 }
@@ -312,6 +321,9 @@ static void prvQueueReceiveTask( void *pvParameters )
 
 static void prvEventSemaphoreTask( void *pvParameters )
 {
+    /* pvParameters is not used in this task function. */
+    ( void )pvParameters;
+
     for( ;; )
     {
         /* Block until the semaphore is 'given'.  NOTE:
@@ -322,20 +334,23 @@ static void prvEventSemaphoreTask( void *pvParameters )
 
         /* Count the number of times the semaphore is received. */
         ulCountOfReceivedSemaphores++;
-        printf("Core %d - Thread '%s': Semaphore taken %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfReceivedSemaphores);
+        printf("Core %d - Thread '%s': Semaphore taken %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfReceivedSemaphores);
     }
 }
 /*-----------------------------------------------------------*/
 
 static void prvSDKMutexUseTask( void *pvParameters )
 {
+    /* pvParameters is not used in this task function. */
+    ( void )pvParameters;
+
     for( ;; )
     {
         mutex_enter_blocking(&xSDKMutex);
         ulCountOfSDKMutexEnters++;
-        printf("Core %d - Thread '%s': SDK Mutex Entered, sleeping for a while %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
+        printf("Core %d - Thread '%s': SDK Mutex Entered, sleeping for a while %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
         vTaskDelay(3000);
-        printf("Core %d - Thread '%s': Sleep finished; SDK Mutex releasing %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
+        printf("Core %d - Thread '%s': Sleep finished; SDK Mutex releasing %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
         mutex_exit(&xSDKMutex);
     }
 }
@@ -343,12 +358,15 @@ static void prvSDKMutexUseTask( void *pvParameters )
 
 static void prvSDKSemaphoreUseTask( void *pvParameters )
 {
+    /* pvParameters is not used in this task function. */
+    ( void )pvParameters;
+
     for( ;; )
     {
         absolute_time_t t = get_absolute_time();
         if (sem_acquire_timeout_us(&xSDKSemaphore, 250500)) {
             ulCountOfSDKSemaphoreAcquires++;
-            printf("Core %d - Thread '%s': SDK Sem acquired %d\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
+            printf("Core %d - Thread '%s': SDK Sem acquired %ld\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()), ulCountOfSDKMutexEnters);
         } else {
             printf("Core %d - Thread '%s': SDK Sem wait timeout (ok) after %d us\n", get_core_num(), pcTaskGetName(xTaskGetCurrentTaskHandle()),
                    (int)absolute_time_diff_us(t, get_absolute_time()));
