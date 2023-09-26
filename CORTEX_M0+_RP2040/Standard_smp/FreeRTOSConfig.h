@@ -131,7 +131,7 @@ to exclude the API function. */
 /* A header file that defines trace macro can be included here. */
 
 /* SMP Related config. */
-#define configUSE_MINIMAL_IDLE_HOOK             0
+#define configUSE_PASSIVE_IDLE_HOOK             0
 #define portSUPPORT_SMP                         1
 
 #endif /* FREERTOS_CONFIG_H */

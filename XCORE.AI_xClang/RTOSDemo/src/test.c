@@ -86,17 +86,16 @@ static void prvSetupHardware( int tile, chanend_t xTile0Chan, chanend_t xTile1Ch
 
 /*-----------------------------------------------------------*/
 
-void vApplicationGetIdleTaskMemory(StaticTask_t **ppxIdleTaskTCBBuffer,
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer,
                                     StackType_t **ppxIdleTaskStackBuffer,
-                                    uint32_t *pulIdleTaskStackSize )
+                                    uint32_t *pulIdleTaskStackSize,
+                                    BaseType_t xCoreId )
 {
-	static StaticTask_t xIdleTaskTCB;
-	static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
+    static StaticTask_t xIdleTaskTCBs[ configNUMBER_OF_CORES ];
+    static StackType_t uxIdleTaskStacks[ configNUMBER_OF_CORES ][ configMINIMAL_STACK_SIZE ];
 
-    *ppxIdleTaskTCBBuffer = &xIdleTaskTCB;
-
-    *ppxIdleTaskStackBuffer = uxIdleTaskStack;
-
+    *ppxIdleTaskTCBBuffer = &( xIdleTaskTCBs[ xCoreId ] );
+    *ppxIdleTaskStackBuffer = &( uxIdleTaskStacks[ xCoreId ][ 0 ] );
     *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
 }
 
@@ -648,7 +647,7 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 }
 /*-----------------------------------------------------------*/
 
-void vApplicationMinimalIdleHook( void )
+void vApplicationPassiveIdleHook( void )
 {
 	//TaskStatus_t status;
 	//vTaskGetInfo(NULL, &status, pdTRUE, eInvalid);
