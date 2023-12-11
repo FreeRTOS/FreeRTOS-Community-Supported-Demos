@@ -116,7 +116,7 @@ void vApplicationGetIdleTaskMemory( StaticTask_t ** ppxIdleTaskTCBBuffer,
         configASSERT( ppxIdleTaskTCBBuffer != NULL );
         configASSERT( ppxIdleTaskStackBuffer != NULL );
         configASSERT( pulIdleTaskStackSize != NULL );
-        configASSERT( ( xPassiveIdleTaskIndex > 0 ) && ( xPassiveIdleTaskIndex < ( configNUMBER_OF_CORES - 1 ) ) );
+        configASSERT( ( xPassiveIdleTaskIndex >= 0 ) && ( xPassiveIdleTaskIndex < ( configNUMBER_OF_CORES - 1 ) ) );
 
         *ppxIdleTaskTCBBuffer = &( xIdleTaskTCBs[ xPassiveIdleTaskIndex ] );
         *ppxIdleTaskStackBuffer = &( uxIdleTaskStacks[ xPassiveIdleTaskIndex ][ 0 ] );
