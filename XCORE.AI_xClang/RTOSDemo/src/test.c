@@ -93,6 +93,10 @@ void vApplicationGetIdleTaskMemory( StaticTask_t ** ppxIdleTaskTCBBuffer,
     static StaticTask_t xIdleTaskTCB;
     static StackType_t uxIdleTaskStack[ configMINIMAL_STACK_SIZE ];
 
+    configASSERT( ppxIdleTaskTCBBuffer != NULL );
+    configASSERT( ppxIdleTaskStackBuffer != NULL );
+    configASSERT( pulIdleTaskStackSize != NULL );
+
     *ppxIdleTaskTCBBuffer = &( xIdleTaskTCB );
     *ppxIdleTaskStackBuffer = &( uxIdleTaskStack[ 0 ] );
     *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
@@ -108,6 +112,11 @@ void vApplicationGetIdleTaskMemory( StaticTask_t ** ppxIdleTaskTCBBuffer,
     {
         static StaticTask_t xIdleTaskTCBs[ configNUMBER_OF_CORES - 1 ];
         static StackType_t uxIdleTaskStacks[ configNUMBER_OF_CORES - 1 ][ configMINIMAL_STACK_SIZE ];
+
+        configASSERT( ppxIdleTaskTCBBuffer != NULL );
+        configASSERT( ppxIdleTaskStackBuffer != NULL );
+        configASSERT( pulIdleTaskStackSize != NULL );
+        configASSERT( ( xPassiveIdleTaskIndex > 0 ) && ( xPassiveIdleTaskIndex < ( configNUMBER_OF_CORES - 1 ) ) );
 
         *ppxIdleTaskTCBBuffer = &( xIdleTaskTCBs[ xPassiveIdleTaskIndex ] );
         *ppxIdleTaskStackBuffer = &( uxIdleTaskStacks[ xPassiveIdleTaskIndex ][ 0 ] );
