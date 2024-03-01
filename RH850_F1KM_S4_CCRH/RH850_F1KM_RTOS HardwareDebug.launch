@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.renesas.cdt.launch.dsf.gdbremote.launchConfigurationType">
+    <booleanAttribute key=".setStepMode" value="false"/>
+    <stringAttribute key="com.renesas.cdt.core.additionalServerArgs" value=""/>
+    <intAttribute key="com.renesas.cdt.core.connectionTimeout" value="30"/>
+    <stringAttribute key="com.renesas.cdt.core.initCommands" value=""/>
+    <stringAttribute key="com.renesas.cdt.core.ipAddress" value="localhost"/>
+    <stringAttribute key="com.renesas.cdt.core.jtagDeviceId" value="com.renesas.hardwaredebug.rh850.e1"/>
+    <listAttribute key="com.renesas.cdt.core.listGDBExe">
+        <listEntry value="v850-elf-gdb"/>
+    </listAttribute>
+    <listAttribute key="com.renesas.cdt.core.listGDBLaunchName">
+        <listEntry value="main"/>
+    </listAttribute>
+    <listAttribute key="com.renesas.cdt.core.listGDBPort">
+        <listEntry value="61234"/>
+    </listAttribute>
+    <booleanAttribute key="com.renesas.cdt.core.loadImage" value="true"/>
+    <stringAttribute key="com.renesas.cdt.core.optionInitCommands" value=""/>
+    <intAttribute key="com.renesas.cdt.core.portNumber" value="61234"/>
+    <stringAttribute key="com.renesas.cdt.core.runCommands" value=""/>
+    <stringAttribute key="com.renesas.cdt.core.secondGDBExe" value=""/>
+    <booleanAttribute key="com.renesas.cdt.core.secondGDBSupport" value="false"/>
+    <intAttribute key="com.renesas.cdt.core.secondGdbPortNumber" value="61237"/>
+    <stringAttribute key="com.renesas.cdt.core.serverParam" value="-g E1  -t R7F701649 -uConnectionTimeout= 30 -umFreq= 20.00 -ulpdType= &quot;4&quot; -ulpdFreq= Default -setOptJtagLpd= 1 -setOptJtagJtag= 0 -w 1 -usupplyVoltage= 1 -usecurityID= FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF -uneedAuthentication= 0 -uresetOnReload= 1 -ustopPeriEmu= 0 -umaskReset= 0 -umaskHldrq= 0 -umaskStop= 0 -umaskWait= 0 -uverifyOnWritingMemory= 0 -uWorkRamAddress= &quot;0xfedfda00&quot; -uForceReset= 0 -uUseSyncTrace= 0"/>
+    <booleanAttribute key="com.renesas.cdt.core.setResume" value="true"/>
+    <booleanAttribute key="com.renesas.cdt.core.setStopAt" value="true"/>
+    <booleanAttribute key="com.renesas.cdt.core.startServer" value="true"/>
+    <stringAttribute key="com.renesas.cdt.core.stopAt" value="main"/>
+    <stringAttribute key="com.renesas.cdt.core.targetDevice" value="R7F701649"/>
+    <booleanAttribute key="com.renesas.cdt.core.useRemoteTarget" value="true"/>
+    <stringAttribute key="com.renesas.cdt.debug.ioview.dsf.registerSelection" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#13;&#10;&lt;selectedRegisterList ioFilePath=&quot;C:\Users\tin.nguyen-van\.eclipse\com.renesas.platform_881181059\DebugComp\RH850\IoFiles\R7F701649.svd&quot;/&gt;&#13;&#10;"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.IO_MAP" value="${support_area_loc}"/>
+    <booleanAttribute key="com.renesas.cdt.launch.dsf.USE_DEFAULT_IO_MAP" value="true"/>
+    <listAttribute key="com.renesas.cdt.launch.dsf.downloadImages">
+        <listEntry value="|true|true|true|0|true|No core|INTERNAL_MEMORY||false"/>
+    </listAttribute>
+    <booleanAttribute key="com.renesas.cdt.launch.dsf.downloadImagesUpgradedV30" value="true"/>
+    <listAttribute key="com.renesas.cdt.launch.dsf.externalFlashDestinationAddresses"/>
+    <listAttribute key="com.renesas.cdt.launch.dsf.externalFlashDownloadModules"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.launchSeqType" value="com.renesas.cdt.launch.dsf.launchSequence.e2GdbServer"/>
+    <stringAttribute key="com.renesas.cdt.launch.dsf.serverPath" value="${renesas.support.targetLoc:com.renesas.ide.supportfiles.rh850.debug.debugSupportFileTarget}\e2-server-gdb"/>
+    <listAttribute key="com.renesas.cdt.launch.ui.address.mruList.memoryMonitorExpression">
+        <listEntry value="0xFFF80760"/>
+    </listAttribute>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.E1RH850TreeDebugToolSettings.resetAfterReload" value="true"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.codeflash_id" value=""/>
+    <intAttribute key="com.renesas.hardwaredebug.e1rh850.connection_type" value="4"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.dataflash_id" value=""/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.e1_pwr" value="true"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.erase_rom" value="false"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.lpdBaud" value="Default"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.lpdFreq" value="Default"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.mainFreq" value="20.00"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.mask.hldrq" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.mask.reset" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.mask.stop" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.mask.wait" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.optjtag.set_jtag" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.optjtag.set_lpd" value="true"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.security_id" value="FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.serial_number" value=""/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.stop_peripheral_emulation" value="false"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.supply_voltage" value="1"/>
+    <intAttribute key="com.renesas.hardwaredebug.e1rh850.timer_clock" value="0"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.trace.cores.clock" value=""/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.trace.enable.cores" value=""/>
+    <intAttribute key="com.renesas.hardwaredebug.e1rh850.trace.synctrace.standard" value="0"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.trace.use.synctrace" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.use_authentication_dll" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.use_force_reset" value="false"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.e1rh850.verify_on_writing_to_memory" value="false"/>
+    <stringAttribute key="com.renesas.hardwaredebug.e1rh850.work_ram_start" value="0xfedfda00"/>
+    <booleanAttribute key="com.renesas.hardwaredebug.timemeasurement" value="true"/>
+    <intAttribute key="org.eclipse.cdt.debug.gdbjtag.core.delay" value="0"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doHalt" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.doReset" value="false"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value="C:\Workspace\FreeRTOS\FreeRTOS\FreeRTOS\Demo\ThirdParty\Community-Supported-Demos\RH850_F1KM_S4_CCRH\HardwareDebug\RH850_F1KM_RTOS.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageOffset" value="0"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.initCommands" value=""/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadImage" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.loadSymbols" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.pcRegister" value=""/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.runCommands" value=""/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setPcRegister" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setResume" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.setStopAt" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.stopAt" value="main"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsFileName" value="C:\Workspace\FreeRTOS\FreeRTOS\FreeRTOS\Demo\ThirdParty\Community-Supported-Demos\RH850_F1KM_S4_CCRH\HardwareDebug\RH850_F1KM_RTOS.x"/>
+    <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.symbolsOffset" value="0"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForImage" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useFileForSymbols" value="false"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useProjBinaryForImage" value="true"/>
+    <booleanAttribute key="org.eclipse.cdt.debug.gdbjtag.core.useProjBinaryForSymbols" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.dsf.gdb.DEBUG_NAME" value="v850-elf-gdb"/>
+    <booleanAttribute key="org.eclipse.cdt.dsf.gdb.NON_STOP" value="true"/>
+    <intAttribute key="org.eclipse.cdt.launch.ATTR_BUILD_BEFORE_LAUNCH_ATTR" value="2"/>
+    <booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN_SYMBOL" value="main"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="HardwareDebug/RH850_F1KM_RTOS.x"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="RH850_F1KM_RTOS"/>
+    <booleanAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_AUTO_ATTR" value="true"/>
+    <stringAttribute key="org.eclipse.cdt.launch.PROJECT_BUILD_CONFIG_ID_ATTR" value="com.renesas.cdt.managedbuild.renesas.ccrh.hardwaredebug.configuration.1239971482"/>
+    <booleanAttribute key="org.eclipse.debug.core.ATTR_FORCE_SYSTEM_CONSOLE_ENCODING" value="false"/>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/RH850_F1KM_RTOS"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="4"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.debug.ui.ATTR_LAUNCH_IN_BACKGROUND" value="false"/>
+    <stringAttribute key="org.eclipse.dsf.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&lt;memoryBlockExpressionList context=&quot;reserved-for-future-use&quot;&gt;&lt;gdbmemoryBlockExpression address=&quot;4294444896&quot; core_thread_id=&quot;1_i1&quot; label=&quot;0xFFF80760&quot;&gt;&lt;memoryRendering id=&quot;org.eclipse.debug.ui.rendering.hexint&quot;&gt;&lt;renderingInstance containerId=&quot;org.eclipse.debug.ui.MemoryView.RenderingViewPane.1&quot; viewId=&quot;org.eclipse.debug.ui.MemoryView&quot; viewSecondaryId=&quot;&quot;/&gt;&lt;/memoryRendering&gt;&lt;/gdbmemoryBlockExpression&gt;&lt;/memoryBlockExpressionList&gt;"/>
+    <stringAttribute key="process_factory_id" value="org.eclipse.cdt.dsf.gdb.GdbProcessFactory"/>
+</launchConfiguration>
