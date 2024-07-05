@@ -1,0 +1,4 @@
+F1KH 2 Core:
+RESET,RESET_PE1,RESET_PEn,STARTUP_CODE/0,ex_entry_PE1/800,ex_entry_PE2,.const,.INIT_BSEC.const,.INIT_DSEC.const,.data,.text/00002000,.stack_pe2.bss/FE9D0000,.stack.bss,.data.R,.bss/FEFB8000,.mev_address.bss/FFFEEC00,RESET_PE2/0800000
+F1KM 1 Core:
+RESET,RESET_PE1,RESET_PEn,STARTUP_CODE/0,ex_entry_PE1/800,.const,.INIT_BSEC.const,.INIT_DSEC.const,.data,.text/00002000,.stack.bss,.data.R,.bss/FEBD0000
