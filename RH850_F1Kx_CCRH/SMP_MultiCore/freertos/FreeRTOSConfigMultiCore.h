@@ -45,12 +45,13 @@
 #include <stddef.h>
 
 /* Constants that describe the hardware and memory usage. */
-#define configCPU_CLOCK_HZ                  ( 80000000U )  /*240000000U */
+#define configCPU_CLOCK_HZ                  ( 240000000U )
 #define configTICK_RATE_HZ                  ( ( TickType_t ) 1000 )
 #define configTOTAL_HEAP_SIZE               ( ( size_t ) 16384 )
 #define configMINIMAL_STACK_SIZE            ( ( uint16_t ) 256 )
 #define configSUPPORT_DYNAMIC_ALLOCATION    1
 #define configSUPPORT_STATIC_ALLOCATION     0
+#define configTIMER_PRESCALE                4
 
 /* Constants related to the behaviour or the scheduler. */
 #define configMAX_PRIORITIES                7
@@ -87,7 +88,7 @@
 
 /* Constants that define which hook (callback) functions should be used. */
 #define configUSE_IDLE_HOOK                        0
-/*#define configUSE_TICK_HOOK                   0 */
+#define configUSE_TICK_HOOK                        0
 #define configUSE_DAEMON_TASK_STARTUP_HOOK         0
 #define configUSE_MALLOC_FAILED_HOOK               0
 
@@ -100,7 +101,7 @@
 #define configNUMBER_OF_CORES                      2
 
 #define configRUN_MULTIPLE_PRIORITIES              1
-#define configUSE_CORE_AFFINITY                    1
+#define configUSE_CORE_AFFINITY                    0
 #define configTICK_CORE                            0
 #define configUSE_TASK_PREEMPTION_DISABLE          0
 #define portCRITICAL_NESTING_IN_TCB                1
