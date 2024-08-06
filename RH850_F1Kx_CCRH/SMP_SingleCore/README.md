@@ -38,12 +38,12 @@ Select the test case you want to run by changing the definition of `configSTART_
 
 This project also support other single core devices by changing the linker.
 
-**F1KM-S4**
+**F1KH-D8**
 ```c
 RESET,RESET_PE1,RESET_PEn,STARTUP_CODE/0,ex_entry_PE1/800,.const,.INIT_BSEC.const,.INIT_DSEC.const,.data,.text/00002000,.stack.bss,.data.R,.bss/FEBD0000
 ```
 
-**F1KH-D8**
+**F1KM-S4**
 ```c
 RESET,RESET_PE1,RESET_PEn,STARTUP_CODE/0,ex_entry_PE1/800,.const,.INIT_BSEC.const,.INIT_DSEC.const,.data,.text/00002000,.stack.bss,.data.R,.bss/FEEE8000
 ```
@@ -53,3 +53,7 @@ For other devices please check memory maps and update the correspond address.
 
 ### Setting Linker
 ![Linker section](../Image//Linker.png)
+
+
+## Note
+1. The test case for `portYIELD_FROM_ISR` are out of scope.

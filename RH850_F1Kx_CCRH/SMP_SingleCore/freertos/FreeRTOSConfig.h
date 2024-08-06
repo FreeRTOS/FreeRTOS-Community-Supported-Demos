@@ -32,7 +32,7 @@
 #define configUSE_TICK_HOOK                          1
 #define configPRINTF( X )    printf X
 
-#define configSTART_TASK_NOTIFY_TESTS                0
+#define configSTART_TASK_NOTIFY_TESTS                1
 #define configSTART_TASK_NOTIFY_ARRAY_TESTS          0
 #define configSTART_BLOCKING_QUEUE_TESTS             0
 #define configSTART_SEMAPHORE_TESTS                  0
@@ -53,8 +53,9 @@
 #define configSTART_MESSAGE_BUFFER_TESTS             0
 #define configSTART_STREAM_BUFFER_TESTS              0
 #define configSTART_STREAM_BUFFER_INTERRUPT_TESTS    0
-#define configSTART_TIMER_TESTS                      1
-#define configSTART_REGISTER_TESTS                   1
-#define configSTART_DELETE_SELF_TESTS                1
+#define configSTART_TIMER_TESTS                      0
+#define configSTART_INTERRUPT_QUEUE_TESTS            0
+#define configSTART_REGISTER_TESTS                   0
+#define configSTART_DELETE_SELF_TESTS                0
 
 #endif /* FREERTOSCONFIG_H_ */

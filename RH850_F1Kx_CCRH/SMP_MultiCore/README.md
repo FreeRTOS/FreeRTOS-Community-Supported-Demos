@@ -41,9 +41,20 @@ RESET,RESET_PE1,RESET_PEn,STARTUP_CODE/0,ex_entry_PE1/800,ex_entry_PE2,.const,.I
 
 ## Note
 1. The configuration `configRUN_MULTIPLE_PRIORITIES` must be set to `0` to PASS the following test cases:
-- `vStartGenericQueueTasks`
-- `vStartQueuePeekTasks`
-- `vStartEventGroupTasks`
-- `vInterruptSemaphorePeriodicTest`
-- `vTimerPeriodicISRTests`
-2. The test cases `vPeriodicStreamBufferProcessing` and `portYIELD_FROM_ISR` are out of scope.
+- `configSTART_GENERIC_QUEUE_TESTS` = `1`
+- `configSTART_PEEK_QUEUE_TESTS` = `1`
+- `configSTART_EVENT_GROUP_TESTS` = `1`
+- `configSTART_INTERRUPT_SEMAPHORE_TESTS` = `1`
+- `configSTART_BLOCK_TIME_TESTS` = `1`
+- `configSTART_TIMER_TESTS` = `1`
+2. The configuration `configUSE_CORE_AFFINITY` must be set to `1` to PASS the following test cases:
+- `configSTART_TASK_NOTIFY_ARRAY_TESTS` = `1`
+- `configSTART_GENERIC_QUEUE_TESTS` = `1`
+- `configSTART_QUEUE_OVERWRITE_TESTS` = `1`
+- `configSTART_INTERRUPT_SEMAPHORE_TESTS` = `1`
+- `configSTART_BLOCK_TIME_TESTS` = `1`
+- `configSTART_ABORT_DELAY_TESTS` = `1`
+- `configSTART_MESSAGE_BUFFER_TESTS` = `1`
+- `configSTART_TIMER_TESTS` = `1`
+3. The test cases `configSTART_STREAM_BUFFER_TESTS` and `configSTART_INTERRUPT_QUEUE_TESTS` are out of scope.
+4. For other test cases, please use default configuraton (`configRUN_MULTIPLE_PRIORITIES` = `1` and `configUSE_CORE_AFFINITY` = `0`)

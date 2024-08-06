@@ -32,7 +32,7 @@
 #define configUSE_TICK_HOOK                          1
 #define configPRINTF( X )    printf X
 
-#define configSTART_TASK_NOTIFY_TESTS                0
+#define configSTART_TASK_NOTIFY_TESTS                1
 #define configSTART_TASK_NOTIFY_ARRAY_TESTS          0
 #define configSTART_BLOCKING_QUEUE_TESTS             0
 #define configSTART_SEMAPHORE_TESTS                  0
