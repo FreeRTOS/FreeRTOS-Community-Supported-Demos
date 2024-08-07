@@ -39,11 +39,6 @@
 			<type>2</type>
 			<locationURI>$%7BRTOS_SOURCE%7D</locationURI>
 		</link>
-		<link>
-			<name>freertos/freertos_port</name>
-			<type>2</type>
-			<locationURI>$%7BRTOS_ROOT%7D/FreeRTOS/Source/portable/ThirdParty/Partner-Supported-Ports/CCRH</locationURI>
-		</link>
 	</linkedResources>
 	<variableList>
 		<variable>
