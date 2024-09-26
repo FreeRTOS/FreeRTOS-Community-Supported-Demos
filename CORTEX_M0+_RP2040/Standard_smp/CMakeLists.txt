@@ -6,6 +6,17 @@ include(pico_sdk_import.cmake)
 # Pull in FreeRTOS
 include(FreeRTOS_Kernel_import.cmake)
 
+if (NOT FREERTOS_DEMO_PATH)
+        if (DEFINED ENV{FREERTOS_DEMO_PATH})
+                set(FREERTOS_DEMO_PATH $ENV{FREERTOS_DEMO_PATH})
+                message("Using FREERTOS_DEMO_PATH from environment ('${FREERTOS_DEMO_PATH}')")
+        elseif(EXISTS ${FREERTOS_KERNEL_PATH}/../Demo)
+                set(FREERTOS_DEMO_PATH ${FREERTOS_KERNEL_PATH}/../Demo)
+        else ()
+                message(FATAL_ERROR "FreeRTOS demo path was not specified. Please set FREERTOS_DEMO_PATH.")
+        endif ()
+endif ()
+
 project(example C CXX ASM)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 17)
@@ -17,21 +28,21 @@ add_executable(main_full_smp
         main_full.c
         IntQueueTimer.c
         RegTest.s
-        ../../../../Common/Minimal/blocktim.c
-        ../../../../Common/Minimal/countsem.c
-        ../../../../Common/Minimal/dynamic.c
-        ../../../../Common/Minimal/recmutex.c
-        ../../../../Common/Minimal/QueueOverwrite.c
-        ../../../../Common/Minimal/EventGroupsDemo.c
-        ../../../../Common/Minimal/IntSemTest.c
-        ../../../../Common/Minimal/IntQueue.c
-        ../../../../Common/Minimal/TaskNotify.c
-        ../../../../Common/Minimal/TimerDemo.c
-        ../../../../Common/Minimal/GenQTest.c
-        ../../../../Common/Minimal/death.c
-        ../../../../Common/Minimal/semtest.c
-        ../../../../Common/Minimal/BlockQ.c
-        ../../../../Common/Minimal/flop.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/blocktim.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/countsem.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/dynamic.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/recmutex.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/QueueOverwrite.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/EventGroupsDemo.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/IntSemTest.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/IntQueue.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/TaskNotify.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/TimerDemo.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/GenQTest.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/death.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/semtest.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/BlockQ.c
+        ${FREERTOS_DEMO_PATH}/Common/Minimal/flop.c
         )
 
 target_compile_definitions(main_full_smp PRIVATE
@@ -40,7 +51,7 @@ target_compile_definitions(main_full_smp PRIVATE
 
 target_include_directories(main_full_smp PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/../../../../Common/include)
+        ${FREERTOS_DEMO_PATH}/Common/include)
 
 target_compile_definitions(main_full_smp PRIVATE
         PICO_STDIO_STACK_BUFFER_SIZE=64 # use a small printf on stack buffer
@@ -74,7 +85,7 @@ target_compile_options( main_blinky_smp PUBLIC
 
 target_include_directories(main_blinky_smp PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
-        ${CMAKE_CURRENT_LIST_DIR}/../../../../Common/include)
+        ${FREERTOS_DEMO_PATH}/Common/include)
 
 target_link_libraries(main_blinky_smp pico_stdlib FreeRTOS-Kernel FreeRTOS-Kernel-Heap1)
 pico_add_extra_outputs(main_blinky_smp)

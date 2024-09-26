@@ -11,6 +11,8 @@ The examples build as regular Raspberry Pi Pico SDK applications. You can build 
 
 See [Getting Started With Pico](https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf) in the SDK documentation for setting up a Raspberry Pi Pico SDK build environment. If you are already set up, then just make sure `PICO_SDK_PATH` is set in your environment or pass it via `-DPICO_SDK_PATH=xxx` on the Cmake command line.
 
+The demos also depend on the `[FreeRTOS Demo](https://github.com/FreeRTOS/FreeRTOS/tree/main/FreeRTOS/Demo)` code found in the main FreeRTOS project. By default, the `FREERTOS_DEMO_PATH` will be computed from the `FREERTOS_KERNEL_PATH`. You can override this behavior by setting `FREERTOS_DEMO_PATH` in your environment or on the Cmake command line.
+
 To build from the command line on unix, from this directory (or from the individual examples' directories), type:
 
 ```shell

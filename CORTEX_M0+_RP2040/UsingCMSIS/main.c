@@ -27,8 +27,6 @@ static void prvMainTask( void *pvParameters );
 static void prvBlinkTask( void *pvParameters );
 
 int main(void) {
-    TimerHandle_t xExampleSoftwareTimer = NULL;
-
     /* Configure the system ready to run the demo.  The clock configuration
     can be done here if it was not done before main() was called. */
     prvSetupHardware();
@@ -79,7 +77,7 @@ int main(void) {
 }
 /*-----------------------------------------------------------*/
 
-static void prvBlinkTask( void *pvParameters )
+static void prvBlinkTask()
 {
     for( ;; )
     {
@@ -89,7 +87,7 @@ static void prvBlinkTask( void *pvParameters )
 }
 
 #include "hardware/irq.h"
-static void prvMainTask( void *pvParameters )
+static void prvMainTask()
 {
     for( ;; )
     {

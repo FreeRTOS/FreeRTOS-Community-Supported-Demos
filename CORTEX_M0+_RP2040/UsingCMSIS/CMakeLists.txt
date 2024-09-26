@@ -18,7 +18,7 @@ target_include_directories(using_cmsis PUBLIC
         ${CMAKE_CURRENT_LIST_DIR}
         )
 
-target_compile_options( on_core_one PUBLIC
+target_compile_options( using_cmsis PUBLIC
         ### Gnu/Clang C Options
         $<$<COMPILE_LANG_AND_ID:C,GNU>:-fdiagnostics-color=always>
         $<$<COMPILE_LANG_AND_ID:C,Clang>:-fcolor-diagnostics>
