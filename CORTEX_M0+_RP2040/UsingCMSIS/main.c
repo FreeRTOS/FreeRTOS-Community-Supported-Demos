@@ -77,8 +77,10 @@ int main(void) {
 }
 /*-----------------------------------------------------------*/
 
-static void prvBlinkTask()
+static void prvBlinkTask( void *pvParameters )
 {
+    ( void ) pvParameters;
+    
     for( ;; )
     {
         vTaskDelay(pdMS_TO_TICKS( 500 ));
@@ -87,8 +89,10 @@ static void prvBlinkTask()
 }
 
 #include "hardware/irq.h"
-static void prvMainTask()
+static void prvMainTask( void *pvParameters )
 {
+    ( void ) pvParameters;
+
     for( ;; )
     {
         vTaskDelay(pdMS_TO_TICKS( 3000 ));
