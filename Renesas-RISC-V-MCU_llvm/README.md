@@ -10,15 +10,16 @@ https://www.renesas.com/en/products/microcontrollers-microprocessors/risc-v/r9a0
 - Import the files contained in the `src` folder of this repo
 - Exclude from the build:
 	- `src/smc_gen/general/r_cg_vect_table.c`
-	- all except one of the files in `src/Source/Portable/MemMang`
+	- all except one of the files in `FreeRTOS/Source/Portable/MemMang`
 		- `heap2.c` is suggested
 - Add to the default includes of the compiler:
 	- `src/Demo/Common`
 	- `src/Demo`
-	- `src/Source/Portable/LLVM` 
-	- `src/Source/include` 
+	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V` 
+	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V/chip_specific_extensions/RISCV_MTIME_CLINT_no_extensions` 
+	- `FreeRTOS/FreeRTOS/Source/include` 
 - Add to the default includes of the assembler:
-	- `src/Source/Portable/LLVM`
+	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V`
 - (Enable the machine timer from the Smart Configurator)
 
 ## How to build and run the project
