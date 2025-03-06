@@ -18,6 +18,7 @@ https://www.renesas.com/en/products/microcontrollers-microprocessors/risc-v/r9a0
 	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V` 
 	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V/chip_specific_extensions/RISCV_MTIME_CLINT_no_extensions` 
 	- `FreeRTOS/FreeRTOS/Source/include` 
+	- **NOTE**: The actual compiler from the Renesas toolchain is LLVM, but since the GCC port files work perfectly they are used here
 - Add to the default includes of the assembler:
 	- `FreeRTOS/FreeRTOS/Source/Portable/GCC/RISC-V`
 - (Enable the machine timer from the Smart Configurator)
