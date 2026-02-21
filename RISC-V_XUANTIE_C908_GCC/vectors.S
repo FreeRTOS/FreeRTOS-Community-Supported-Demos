@@ -36,10 +36,6 @@
 
 #include "riscv_asm_macro.h"
 
-#ifndef CONFIG_NR_CPUS
-    #define CONFIG_NR_CPUS 1
-#endif
-
     .section .vectors
     .align  6
     .globl  __Vectors

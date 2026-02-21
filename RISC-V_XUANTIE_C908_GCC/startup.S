@@ -17,10 +17,7 @@
  */
 
 #include <csi_config.h>
-
-#ifndef configNUMBER_OF_CORES
-    #define configNUMBER_OF_CORES                       1
-#endif
+#include <FreeRTOSConfig.h>
 
  .text
     .align  2
@@ -54,20 +51,20 @@ Reset_Handler:
     or	    a0, a0,a1
     csrw    mtvec, a0
     /* get cpu id */
-    csrr a0, mhartid
+    csrr    a0, mhartid
     /* check if hart is within range */
     /* tp: hart id */
-    li	t0, configNUMBER_OF_CORES
-    bge	a0, t0, hart_out_of_bounds_loop
+    li      t0, configNUMBER_OF_CORES
+    bge     a0, t0, hart_out_of_bounds_loop
     /* sp = (cpuid + 1) * CONFIG_ARCH_INTERRUPTSTACK + g_base_irqstack */
-    la   sp, g_base_irqstack
-    addi t1, a0, 1
-    li   t2, CONFIG_ARCH_INTERRUPTSTACK
-    mul  t1, t1, t2
-    add  sp, sp, t1
+    la      sp, g_base_irqstack
+    addi    t1, a0, 1
+    li      t2, CONFIG_ARCH_INTERRUPTSTACK
+    mul     t1, t1, t2
+    add     sp, sp, t1
     /*jump to cpu entry directly */
-    la   a0, main
-    jalr a0
+    la      a0, main
+    jalr    a0
 .size   Reset_Handler, . - Reset_Handler
     /* never access here */
 __exit:
@@ -76,7 +73,7 @@ __exit:
 hart_out_of_bounds_loop:
     /* Harts in this loop are out of bounds, increase configNUMBER_OF_CORES. */
     wfi
-    j	hart_out_of_bounds_loop
+    j    hart_out_of_bounds_loop
 
 
 .section .stack, "aw", @nobits
