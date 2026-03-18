@@ -1,0 +1,61 @@
+/*
+ * FreeRTOS V202212.00
+ * Copyright (C) 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software. If you wish to use our Amazon
+ * FreeRTOS name, please do so in a fair use way that does not cause confusion.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ * https://www.FreeRTOS.org
+ * https://github.com/FreeRTOS
+ *
+ */
+
+/* Scheduler includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+
+/* Demo includes. */
+#include "IntQueueTimer.h"
+#include "IntQueue.h"
+
+#include <drv/timer.h>
+static void prvTmrCb(void *arg)
+{
+	(void)arg;
+	IntQueueTestTimerHandler();
+}
+
+/*-----------------------------------------------------------*/
+
+static csi_timer_t timer;
+void vInitialiseTimerForIntQueueTest( void )
+{
+	uint64_t us_per_s = 1000000U;
+	/* Initialize a hardware timer. */
+	csi_timer_init(&timer, 0);
+	csi_vic_set_prio(timer.dev.irq_num, 1);
+	csi_timer_attach_callback(&timer, prvTmrCb, NULL);
+	csi_timer_start(&timer, us_per_s / configTICK_RATE_HZ);
+}
+/*-----------------------------------------------------------*/
+
+void IntQueueTestTimerHandler( void )
+{
+	portYIELD_FROM_ISR( xSecondTimerHandler() );
+}
+/*-----------------------------------------------------------*/
