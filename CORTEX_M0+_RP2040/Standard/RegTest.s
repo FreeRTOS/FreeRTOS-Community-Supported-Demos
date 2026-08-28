@@ -29,7 +29,12 @@
 .thumb
 
 .global vRegTest1Implementation
+.type vRegTest1Implementation, %function
+.thumb_func
+
 .global vRegTest2Implementation
+.type vRegTest2Implementation, %function
+.thumb_func
 
 /*-----------------------------------------------------------*/
 vRegTest1Implementation:
